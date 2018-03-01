@@ -73,6 +73,8 @@ def ride_menager():
             cars_element.rides.append(best_option.ride_id)
             print("Steps: " + str(actual_steps))
             testRides.remove(best_option)
+            if(len(testRides) <= 0):
+                break
 
 
 file_name = 'b_should_be_easy.in'
@@ -110,7 +112,6 @@ def save(cars):
     s_file = open("results_"+file_name, "w+")
     for car in cars:
         s_file.write(str(len(car.rides)) + " ")
-        print(len(car.rides))
         for ride in car.rides:
             s_file.write(str(ride)+ " ")
         s_file.write("\n")
