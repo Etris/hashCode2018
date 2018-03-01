@@ -72,7 +72,7 @@ def ride_menager():
             testRides.remove(best_option)
 
 
-file_name = 'a_example.in'
+file_name = 'b_should_be_easy.in'
 file = open(file_name, "r")
 first_line = file.readline()
 first_line_split = first_line.split(" ")
@@ -106,10 +106,11 @@ def get_final_step():
 def save(cars):
     s_file = open("results_"+file_name, "w+")
     for car in cars:
-        s_file.write(str(len(car.rides)))
+        s_file.write(str(len(car.rides)) + " ")
+        print(len(car.rides))
         for ride in car.rides:
             s_file.write(str(ride) + " ")
-    s_file.write("\n")
+        s_file.write("\n")
 
 
 testCars = get_cars()
@@ -119,5 +120,4 @@ total_points = 0
 ride_menager()
 print(total_points)
 save(testCars)
-
 
