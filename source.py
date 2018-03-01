@@ -109,7 +109,7 @@ def save(cars):
         s_file.write(str(len(car.rides)) + " ")
         print(len(car.rides))
         for ride in car.rides:
-            s_file.write(str(ride) + " ")
+            s_file.write(str(ride)+ " ")
         s_file.write("\n")
 
 
@@ -120,4 +120,3 @@ total_points = 0
 ride_menager()
 print(total_points)
 save(testCars)
-
