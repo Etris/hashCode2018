@@ -24,7 +24,9 @@ class ride:
 
 testCars = filer.get_cars()
 testRides = filer.get_ride_list()
-totalPoints = 0
+bonus = filer.get_bonus()
+total_points = 0
+
 
 def take_best_ride(x, y):
     act_best_ride_id = testRides[0].ride_id
@@ -40,6 +42,16 @@ def take_best_ride(x, y):
     for element in testRides:
         if element.ride_id == act_best_ride_id:
             return element
+
+
+def count_points(s_time, exp_s_time, f_time, exp_f_time, dist):
+    global total_points
+    if s_time == exp_s_time:
+        total_points += bonus
+    if f_time <= exp_f_time:
+        total_points += dist
+
+
 
 #punktowanie: czas na miejscu +B pkt, przejazd w czasie dystans
 #parametry stopu: kroki, koniec przejazdow
