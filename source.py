@@ -62,11 +62,15 @@ def ride_menager():
         for cars_element in testCars:
             best_option = take_best_ride(cars_element.actual_x, cars_element.actual_y)
             arrival_at_start_time = abs(cars_element.actual_x - best_option.start_x) + abs(cars_element.actual_y - best_option.start_y)
+            count_points((arrival_at_start_time + cars_element.ava_time), best_option.start_time,
+                         (arrival_at_start_time + cars_element.ava_time + best_option.distance),
+                         best_option.end_time, best_option.distance)
             cars_element.ava_time += arrival_at_start_time + best_option.distance
             cars_element.actual_x = best_option.end_x
             cars_element.actual_y = best_option.end_y
             actual_steps += arrival_at_start_time + best_option.distance
             testRides.remove(best_option)
+
 
 
 
