@@ -30,7 +30,9 @@ def take_best_ride(act, x, y):
             continue
         if ((abs(element.start_x - x) + abs(element.start_y - y)) + act) == element.start_time:
             if ((abs(element.start_x - x) + abs(element.start_y - y)) + act) + element.distance < element.end_time:
-                return element
+                if act_best_start < element.start_time:
+                    act_best_start = element.start_time
+                    act_best_ride_id = element.ride_id
             else:
                 continue
         elif ((abs(element.start_x - x) + abs(element.start_y - y)) + act) > element.start_time:
@@ -69,6 +71,7 @@ def ride_menager():
             cars_element.actual_y = best_option.end_y
             actual_steps += arrival_at_start_time + best_option.distance
             cars_element.rides.append(best_option.ride_id)
+            print("Steps: " + str(actual_steps))
             testRides.remove(best_option)
 
 
