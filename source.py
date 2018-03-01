@@ -44,7 +44,7 @@ def take_best_ride(x, y):
 #punktowanie: czas na miejscu +B pkt, przejazd w czasie dystans
 #parametry stopu: kroki, koniec przejazdow
 
-def ride_menager:
+def ride_menager():
     actual_steps = 0
     while filer.get_final_step() < actual_steps and len(testRides) > 0:
         for cars_element in testCars:
