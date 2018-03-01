@@ -31,3 +31,12 @@ def get_final_step():
     return first_line_split[5]
 
 
+def save(cars):
+    s_file = open("results_"+file_name, "w")
+    for car in cars:
+        for ride in car.rides:
+            s_file.write(str(ride) + " ")
+        s_file.write("\n")
+
+
+
