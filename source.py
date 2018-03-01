@@ -28,20 +28,24 @@ bonus = filer.get_bonus()
 total_points = 0
 
 
-def take_best_ride(x, y):
+def take_best_ride(act, x, y):
     act_best_ride_id = testRides[0].ride_id
     act_best_start = testRides[0].start_time
     act_best_finish = testRides[0].end_time
     act_best_distance_to_start = abs(x - testRides[0].start_x) + abs(y - testRides[0].start_y)
+    is_bonus = False
     for element in testRides:
-        if element.start_x != x and element.start_y != y:
-            if element.start_time <= act_best_start:
-                if element.end_time <= act_best_finish:
-                    if act_best_distance_to_start <= abs(x - element.start_x) + abs(y - element.start_y):
-                        act_best_ride_id = element.ride_id
-                        act_best_start = element.start_time
-                        act_best_finish = element.end_time
-                        act_best_distance_to_start = abs(x - element.start_x) + abs(y - element.start_y)
+        if act > element.start_time:
+            continue
+        if ((abs(element.start_x - x) + abs(element.start_y - y)) + act) == element.start_time:
+            if ((abs(element.start_x - x) + abs(element.start_y - y)) + act) + element.distance < element.end_time:
+                return element
+            else:
+                continue
+        elif ((abs(element.start_x - x) + abs(element.start_y - y)) + act) > element.start_time and is_bonus == False:
+            if ((abs(element.start_x - x) + abs(element.start_y - y)) + act + element.distance) < element.end_time:
+                if act_best_start > element.start_time and act_best_distance_to_start > element.distance:
+                    act_best_ride_id = element.ride_id
     for element in testRides:
         if element.ride_id == act_best_ride_id:
             return element
@@ -63,7 +67,7 @@ def ride_menager():
     actual_steps = 0
     while filer.get_final_step() < actual_steps and len(testRides) > 0:
         for cars_element in testCars:
-            best_option = take_best_ride(cars_element.actual_x, cars_element.actual_y)
+            best_option = take_best_ride(cars_element.ava_time, cars_element.actual_x, cars_element.actual_y)
             arrival_at_start_time = abs(cars_element.actual_x - best_option.start_x) + abs(cars_element.actual_y - best_option.start_y)
             count_points((arrival_at_start_time + cars_element.ava_time), best_option.start_time,
                          (arrival_at_start_time + cars_element.ava_time + best_option.distance),
