@@ -65,6 +65,7 @@ def ride_menager:
             cars_element.ava_time += arrival_at_start_time + best_option.distance
             cars_element.actual_x = best_option.end_x
             cars_element.actual_y = best_option.end_y
+            actual_steps += arrival_at_start_time + best_option.distance
             testRides.remove(best_option)
 
 
