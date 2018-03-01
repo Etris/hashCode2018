@@ -39,6 +39,8 @@ def take_best_ride(x, y):
                 if element.end_time <= act_best_finish:
                     if act_best_distance_to_start <= abs(x - element.start_x) + abs(y - element.start_y):
                         act_best_ride_id = element.ride_id
+                        act_best_start = element.start_time
+                        act_best_finish = element.end_time
     for element in testRides:
         if element.ride_id == act_best_ride_id:
             return element
