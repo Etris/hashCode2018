@@ -1,6 +1,6 @@
 import source
 
-file_name = 'a_example.in'
+file_name = 'b_should_be_easy.in'
 file = open(file_name, "r")
 first_line = file.readline()
 first_line_split = first_line.split(" ")
