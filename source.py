@@ -1,4 +1,3 @@
-import math
 class car:
     def __init__(self, x, y, id, ava):
         self.actual_x = x
@@ -7,12 +6,6 @@ class car:
         self.ava_time = ava
 
 class ride:
-    #start x y
-    #end x y
-    #distance
-    #start time
-    #finish time
-    #id
     def __init__(self, s_x, s_y, e_x, e_y, s_time, f_time, id):
         self.start_x = s_x
         self.start_y = s_y
