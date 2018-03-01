@@ -20,10 +20,9 @@ class ride:
 
 testCars = list()
 testRides = list()
-def takeBestRide(x, y):
-    #najnizszy czas startu
-    #najniszy czas konca
-    #najmniejszy dystans
+
+
+def take_best_ride(x, y):
     act_best_ride_id = testRides[0].ride_id
     act_best_start = testRides[0].start_time
     act_best_finish = testRides[0].end_time
@@ -31,7 +30,7 @@ def takeBestRide(x, y):
     for element in testRides:
         if element.start_time <= act_best_start:
             if element.end_time <= act_best_finish:
-                if act_best_distance_to_start <= abs( x - element.start_x) + abs( y - element.start_y):
+                if act_best_distance_to_start <= abs(x - element.start_x) + abs(y - element.start_y):
                     act_best_ride_id = element.ride_id
     return act_best_ride_id
 
