@@ -47,7 +47,7 @@ def take_best_ride(act, x, y):
 def count_points(s_time, exp_s_time, f_time, exp_f_time, dist):
     global total_points
     if s_time == exp_s_time:
-        total_points += bonus
+        total_points += int(bonus)
     if f_time <= exp_f_time:
         total_points += dist
 
@@ -80,7 +80,7 @@ def ride_menager():
                 break
 
 
-file_name = 'b_should_be_easy.in'
+file_name = 'e_high_bonus.in'
 file = open(file_name, "r")
 first_line = file.readline()
 first_line_split = first_line.split(" ")
