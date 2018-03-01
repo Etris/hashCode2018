@@ -61,6 +61,7 @@ def ride_menager():
     actual_steps = 0
     while int(get_final_step()) > actual_steps and len(testRides) > 0:
         for cars_element in testCars:
+            actual_car_steps = 0
             best_option = take_best_ride(cars_element.ava_time, cars_element.actual_x, cars_element.actual_y)
             arrival_at_start_time = abs(cars_element.actual_x - best_option.start_x) + abs(cars_element.actual_y - best_option.start_y)
             count_points((arrival_at_start_time + cars_element.ava_time), best_option.start_time,
@@ -69,11 +70,13 @@ def ride_menager():
             cars_element.ava_time += arrival_at_start_time + best_option.distance
             cars_element.actual_x = best_option.end_x
             cars_element.actual_y = best_option.end_y
-            actual_steps += arrival_at_start_time + best_option.distance
+            actual_car_steps += arrival_at_start_time + best_option.distance
             cars_element.rides.append(best_option.ride_id)
             print("Steps: " + str(actual_steps))
             testRides.remove(best_option)
-            if(len(testRides) <= 0):
+            if actual_car_steps > actual_steps:
+                actual_steps = actual_car_steps
+            if len(testRides) <= 0:
                 break
 
 
